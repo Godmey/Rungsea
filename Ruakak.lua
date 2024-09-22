@@ -94,18 +94,6 @@ function V()
     end
 end
 
-local mt = getrawmetatable(game)
-setreadonly(mt, false)
-
-local Old = mt.__namecall
-mt.__namecall = newcclosure(function(self, ...)
-    local method = getnamecallmethod()
-    if method:lower() == "kick" then
-        return nil
-    end
-    return Old(self, ...)
-end)
-
 
 local function SetUP(a, b)
     return getgenv().Config[a][b]
@@ -435,4 +423,19 @@ spawn(function()
         end
     end)
 end)
+
+
+
+local mt = getrawmetatable(game)
+setreadonly(mt, false)
+
+local Old = mt.__namecall
+mt.__namecall = newcclosure(function(self, ...)
+    local method = getnamecallmethod()
+    if method:lower() == "kick" then
+        return nil
+    end
+    return Old(self, ...)
+end)
+
 
