@@ -1,3 +1,24 @@
+if not getgenv().Config then
+    getgenv().Config = {
+        ["Tool"] = {
+            ["Distance"] = 0,
+            ["Method"] = "Upper",
+            ["One Hit Auto Farm"] = false,
+            ["Equip Weapon"] = nil,
+        },
+        ["Farm"] = {
+            ["Select Mon"] = nil,
+            ["Auto Farm SelectMon"] = false,
+            ["Auto Farm Ruby"] = false,
+        },
+        ["Skill"] = {
+            ["Z"] = false,
+            ["X"] = false,
+            ["C"] = false,
+            ["V"] = false,
+        },
+    }
+end
 
 
 
