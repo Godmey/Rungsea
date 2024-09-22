@@ -1,13 +1,13 @@
 if not getgenv().Config then
     getgenv().Config = {
         ["Tool"] = {
-            ["Distance"] = 0,
+            ["Distance"] = 5,
             ["Method"] = "Upper",
             ["One Hit Auto Farm"] = false,
-            ["Equip Weapon"] = nil,
+            ["Equip Weapon"] = "",
         },
         ["Farm"] = {
-            ["Select Mon"] = nil,
+            ["Select Mon"] = "",
             ["Auto Farm SelectMon"] = false,
             ["Auto Farm Ruby"] = false,
         },
@@ -19,7 +19,6 @@ if not getgenv().Config then
         },
     }
 end
-
 
 
 function GetName(Folder, Class)
@@ -114,6 +113,18 @@ function V()
         end
     end
 end
+
+local mt = getrawmetatable(game)
+setreadonly(mt, false)
+
+local Old = mt.__namecall
+mt.__namecall = newcclosure(function(self, ...)
+    local method = getnamecallmethod()
+    if method:lower() == "kick" then
+        return nil
+    end
+    return Old(self, ...)
+end)
 
 
 local function SetUP(a, b)
@@ -324,7 +335,7 @@ end)
 
 local function setupMethod()
     local method = getgenv().method
-    local offset = SetUP("Tool", "Distance")
+    local offset = SetUP("Tool", "Distance") or 5
 
     if method == "Behind" then
         return CFrame.new(0, 0, offset)
@@ -422,7 +433,7 @@ end)
 
 spawn(function()
     game:GetService("RunService").Stepped:Connect(function()
-        if _G.Auto then
+        if _G.Auto or _G.AutoRubyMon then
                 for _, v in ipairs(game.Players.LocalPlayer.Character:GetDescendants()) do
                     if v:IsA("BasePart") and v.CanCollide then
                         v.CanCollide = false
@@ -444,19 +455,3 @@ spawn(function()
         end
     end)
 end)
-
-
-
-local mt = getrawmetatable(game)
-setreadonly(mt, false)
-
-local Old = mt.__namecall
-mt.__namecall = newcclosure(function(self, ...)
-    local method = getnamecallmethod()
-    if method:lower() == "kick" then
-        return nil
-    end
-    return Old(self, ...)
-end)
-
-
