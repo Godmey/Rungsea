@@ -1,3 +1,4 @@
+
 if not getgenv().Config then
     getgenv().Config = {
         ["Tool"] = {
@@ -115,7 +116,6 @@ function V()
 end
 
 
-
 local function SetUP(a, b)
     return getgenv().Config[a][b]
 end
@@ -157,7 +157,7 @@ local function TP(cframe)
     end)
 end
 
-local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/RedzLibV5/main/Source.Lua"))()
+local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Godmey/Redz-Ui/refs/heads/main/Ui.lua"))()
 
 local Window = redzlib:MakeWindow({
     Title = "Rimura Hub : " .. NameMap,
@@ -303,7 +303,7 @@ T5:AddToggle({
         _G.V = vv
         while _G.V do 
             wait() 
-            V()
+            V() 
         end
     end
 })
@@ -313,7 +313,7 @@ spawn(function()
     pcall(function()
       if _G.GrabTool then
         for _, v in pairs(workspace:GetChildren()) do
-          if v:IsA("Tool") then
+          if v:IsA("Tool") and not v:FindFirstChild("Active") then
             v.Handle.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
           end
         end
@@ -444,3 +444,4 @@ spawn(function()
         end
     end)
 end)
+
