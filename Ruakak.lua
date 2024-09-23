@@ -4,10 +4,10 @@ if not getgenv().Config then
             ["Distance"] = 5,
             ["Method"] = "Upper",
             ["One Hit Auto Farm"] = false,
-            ["Equip Weapon"] = "",
+            ["Equip Weapon"] = "nil",
         },
         ["Farm"] = {
-            ["Select Mon"] = "",
+            ["Select Mon"] = "nil",
             ["Auto Farm SelectMon"] = false,
             ["Auto Farm Ruby"] = false,
         },
@@ -114,17 +114,6 @@ function V()
     end
 end
 
-local mt = getrawmetatable(game)
-setreadonly(mt, false)
-
-local Old = mt.__namecall
-mt.__namecall = newcclosure(function(self, ...)
-    local method = getnamecallmethod()
-    if method:lower() == "kick" then
-        return nil
-    end
-    return Old(self, ...)
-end)
 
 
 local function SetUP(a, b)
