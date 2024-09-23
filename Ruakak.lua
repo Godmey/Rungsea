@@ -66,15 +66,15 @@ for _, N in ipairs(Numbers) do
 end
 
 
-for _, v in pairs(workspace["มอนเตอร์"]:GetChildren()) do
-    if v:IsA("Folder") then
-        v.Changed:Connect(function()
-            if v.Name ~= "Events" and v.Name ~= "Heaven" and not v.Name:match("^%d+$") then
-                v.Name = "Rimuru Hub"
-            end
-        end)
-    end
-end
+--for _, v in pairs(workspace["มอนเตอร์"]:GetChildren()) do
+--    if v:IsA("Folder") then
+--        v.Changed:Connect(function()
+--            if v.Name ~= "Events" and v.Name ~= "Heaven" and not v.Name:match("^%d+$") then
+--                v.Name = "Rimuru Hub"
+--            end
+--        end)
+--    end
+-- end
 
 local player = game.Players.LocalPlayer
 local character = player.Character or player.CharacterAdded:Wait()
@@ -356,7 +356,7 @@ spawn(function()
     while wait() do
         pcall(function()
             if _G.AutoRubyMon then
-                for _, v in ipairs(workspace["มอนเตอร์"]["Rimuru Hub"]:GetChildren()) do
+                for _, v in ipairs(workspace.Seller["anti found hack"]:GetChildren()) do
                     if v:IsA("Model") and v.Name ~= "Shark " and v:FindFirstChildOfClass("Humanoid") then
                         local humanoid = v:FindFirstChildOfClass("Humanoid")
                         local rootPart = v:FindFirstChild("HumanoidRootPart")
