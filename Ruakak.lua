@@ -356,7 +356,7 @@ spawn(function()
     while wait() do
         pcall(function()
             if _G.AutoRubyMon then
-                for _, v in ipairs(workspace["มอนเตอร์"]["RimuruHub"]:GetChildren()) do
+                for _, v in ipairs(workspace["มอนเตอร์"]["Rimuru Hub"]:GetChildren()) do
                     if v:IsA("Model") and v.Name ~= "Shark " and v:FindFirstChildOfClass("Humanoid") then
                         local humanoid = v:FindFirstChildOfClass("Humanoid")
                         local rootPart = v:FindFirstChild("HumanoidRootPart")
